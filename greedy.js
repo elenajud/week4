@@ -3,6 +3,8 @@ console.log("Сортировка по цене даёт:")
 testGreedy(items, 20, cmpValue)
 console.log("Сортировка по обратному весу даёт:")
 testGreedy(items, 20, cmpWeightInverse)
+console.log("Сортировка по удельной стоимости:")
+testGreedy(items, 20, cmpDensity)
 
 function testGreedy(items, maxWeight, cmpFunction)
 {
@@ -36,6 +38,13 @@ function cmpValue(itemA, itemB)
 	return r
 }
 
+function cmpDensity(itemA, itemB)
+{
+	let r = itemA.value/itemA.weight - itemB.value/itemB.weight
+	return r
+}
+
+
 function cmpWeightInverse(itemA, itemB)
 {
 	let r = 1/itemA.weight - 1/itemB.weight
@@ -51,11 +60,11 @@ function buildItems()
 	for (let i = 0; i < values.length; i++)
 	{
 		items.push({
-			name:names[i], 
-			value: values[i], 
+			name:names[i],
+			value: values[i],
 			weight: weights[i]
 		})
-	} 
+	}
 	return items
 }
 
